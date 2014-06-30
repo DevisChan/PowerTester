@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns   = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "info.walkingpath.powertest"
+        versionCode = "10" 
+        version     = "1.0.0" >
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>Power Tester</name>
+
+    <description>
+        An app for human beings to memorize some knowledge
+    </description>
+
+    <author email="cdzos97@gmail.com">
+        Devis Chan
+    </author>
+
+</widget>
