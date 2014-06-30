@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<!--HTML5 doctype-->
+<html>
+
+    <head>
+        <script>
+        (function() {
+    if ("-ms-user-select" in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/)) {
+        var msViewportStyle = document.createElement("style");
+        msViewportStyle.appendChild(
+            document.createTextNode("@-ms-viewport{width:auto!important}")
+        );
+        document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+    }
+})();
+</script>
+
+        <title>App Framework Kitchen Sink</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="stylesheet" type="text/css" href="css/icons.css" />    
+ 
+       <!--   
+     <link rel="stylesheet" type="text/css" href="css/af.ui.css" title="default" />
+  -->
+      <link rel="stylesheet" type="text/css" href="css/main.css"  />
+      <link rel="stylesheet" type="text/css" href="css/appframework.css"  />
+      <link rel="stylesheet" type="text/css" href="css/lists.css"  />
+      <link rel="stylesheet" type="text/css" href="css/forms.css"  />
+      <link rel="stylesheet" type="text/css" href="css/buttons.css"  />        
+      <link rel="stylesheet" type="text/css" href="css/badges.css"  />        
+      <link rel="stylesheet" type="text/css" href="css/grid.css"  />
+
+      <link rel="stylesheet" type="text/css" href="css/android.css"  />
+      <link rel="stylesheet" type="text/css" href="css/win8.css"  />
+      <link rel="stylesheet" type="text/css" href="css/ios.css"  />
+      <link rel="stylesheet" type="text/css" href="css/ios7.css"  />
+        
+      <link rel="stylesheet" type="text/css" href="plugins/css/af.actionsheet.css"  />
+      <link rel="stylesheet" type="text/css" href="plugins/css/af.popup.css"  />
+      <link rel="stylesheet" type="text/css" href="plugins/css/af.scroller.css"  />
+      <link rel="stylesheet" type="text/css" href="plugins/css/af.selectBox.css"  />  
+        <link rel="stylesheet" type="text/css" href="stylesheets/common_mobi.css" />
+        
+        <!-- uncomment for intel.xdk apps 
+        <script type="text/javascript" charset="utf-8" src="intelxdk.js"></script>
+        <script type="text/javascript" charset="utf-8" src="xhr.js"></script>
+        -->
+        <script src="xhr.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./appframework.js"></script>
+        <!-- include af.desktopBrowsers.js on desktop browsers only -->
+        <script>
+
+            function loadedPanel(what) {
+                //We are going to set the badge as the number of li elements inside the target
+                $.ui.updateBadge("#aflink", $("#af").find("li").length);
+            }
+
+
+            function unloadedPanel(what) {
+                console.log("unloaded " + what.id);
+            }
+
+            if (!((window.DocumentTouch && document instanceof DocumentTouch) || 'ontouchstart' in window)) {
+                var script = document.createElement("script");
+                script.src = "plugins/af.desktopBrowsers.js";
+                var tag = $("head").append(script);
+                //$.os.desktop=true;
+            }
+
+          //  $.feat.nativeTouchScroll=true;
+          
+        </script>        
+        <script type="text/javascript" charset="utf-8" src="./plugins/af.actionsheet.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./plugins/af.css3animate.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./plugins/af.passwordBox.js"></script>          
+        <script type="text/javascript" charset="utf-8" src="./plugins/af.scroller.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./plugins/af.selectBox.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./plugins/af.touchEvents.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./plugins/af.touchLayer.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./plugins/af.popup.js"></script>
+
+        <script type="text/javascript" charset="utf-8" src="./ui/appframework.ui.js"></script>
+        <!-- <script type="text/javascript" charset="utf-8" src="./ui/transitions/all.js"></script> -->
+        <script type="text/javascript" charset="utf-8" src="./ui/transitions/fade.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./ui/transitions/flip.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./ui/transitions/pop.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./ui/transitions/slide.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./ui/transitions/slideDown.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./ui/transitions/slideUp.js"></script>
+        <script type="text/javascript" charset="utf-8" src="./plugins/af.slidemenu.js"></script>
+        <script type="application/javascript" src="./coffee/model.js"></script>
+        
+
+        <script type="text/javascript">
+            /* This function runs once the page is loaded, but intel.xdk is not yet active */
+            //$.ui.animateHeaders=false;
+             var search=document.location.search.toLowerCase().replace("?","");
+             //if(!search)
+            $.ui.useOSThemes=true;
+            if(search.length>0) //Android fix has too many buggy issues on iOS - can't preview with $.os.android
+            {
+
+               $.ui.useOSThemes=true;
+                if(search=="win8")
+                    $.os.ie=true;
+                $.ui.ready(function(){
+                    $("#afui").get(0).className=search;
+                });
+            }
+            
+            var webRoot = "./";
+            // $.os.android=true;
+            //$.ui.autoLaunch = false;
+            $.ui.openLinksNewTab = false;
+            $.ui.splitview=false;
+            
+
+            $(document).ready(function(){
+                  // $.ui.launch();
+
+            });
+            
+            /* This code is used to run as soon as intel.xdk activates */
+            var onDeviceReady = function () {
+                intel.xdk.device.setRotateOrientation("portrait");
+                intel.xdk.device.setAutoRotate(false);
+                webRoot = intel.xdk.webRoot + "";
+                //hide splash screen
+                intel.xdk.device.hideSplashScreen();
+                $.ui.blockPageScroll(); //block the page from scrolling at the header/footer
+            };
+            document.addEventListener("intel.xdk.device.ready", onDeviceReady, false);
+
+            function showHide(obj, objToHide) {
+                var el = $("#" + objToHide)[0];
+
+                if (obj.className == "expanded") {
+                    obj.className = "collapsed";
+                } else {
+                    obj.className = "expanded";
+                }
+                $(el).toggle();
+
+            }
+
+
+            if($.os.android||$.os.ie||search=="android"){
+                $.ui.ready(function(){
+                    $("#main .list").append("<li><a id='toggleAndroidTheme'>Toggle Theme Color</a></li>");
+                    var $el=$("#afui");
+                    $("#toggleAndroidTheme").bind("click",function(e){
+                        if($el.hasClass("light"))
+                            $el.removeClass("light");
+                        else
+                            $el.addClass("light");
+                    });
+                });
+            }                        
+        </script>
+
+</head>
+
+    <body>
+        <div id="afui">
+            <!-- this is the splashscreen you see. -->
+            <div id="splashscreen" class='ui-loader heavy'>
+                Power Tester
+                <br>
+                <br>    <span class='ui-icon ui-icon-loading spin'></span>
+                <h1>Starting app</h1>
+                <script type="text/javascript">
+                    this.db = new myDB('com');
+                </script>
+
+            </div>
+            <div id="header">
+                <a id='menubadge' onclick='af.ui.toggleSideMenu()' class='menuButton'></a>                 
+            </div>
+            <div id="content">
+                <div title='PowerTester' id="main" class="panel" selected="true" data-load="loadedPanel" data-unload="unloadedPanel" data-tab="navbar_home">
+                    <h2 class='expanded' onclick='showHide(this,"main_info");'>欢迎</h2>
+
+                    <p id='main_info'>欢迎来到PowerTest 在这里你将可以通过测试来协助你的记忆。</p>
+                    <div id="main-panel">
+                        <div>
+                        <a class="button">弱智题</a>
+                        <a class="button" style="float:right;">超难的</a>
+                        </div>
+                        <br>
+                        <br>
+                        <div id="question-field"></div>
+                    </div>
+                    <script type="text/javascript">
+                    $('#main-panel').css('min-height',window.innerHeight*0.8);
+                    </script>
+                </div>
+                <!---------------------------------------------->
+                <div title="Post Item" id="postItem" class="panel" data-tab="navbar_post" data-nav="menu_AppFramework" data-header="postItemheader">
+                    <!-- <header><span>This is an inline header in a panel.  Below is an inline footer</span></header>-->
+                        <h2 class='expanded' onclick='showHide(this,"postItem_info");'>Post Helper</h2>
+
+                    <p id='postItem_info'>在这里你可以提交属于你自己的条目，而你提交的条目也会上转到服务器储存起来。你要将文本里需要盖住的内容用英文的{}括起来，例如： DNA的全称是{脱氧核糖核苷酸}</p>
+                    <div class="formGroupHead">内容</div>
+                <form class="">
+                    <input id="itemName" type="text" placeholder="科目">
+                    <textarea id="itemContent" rows="6" placeholder="DNA的全称是{脱氧核糖核苷酸}"></textarea>
+                    <a class="button" id="commitItem" style="float:right;">提交</a>
+                </form>
+                </div>
+    
+            <!-- ------------------------------------------ -->
+            <!---------------------------------------------->
+                <div title="Admin" id="admin" class="panel" data-tab="navbar_admin" data-nav="menu_AppFramework" data-header="testheader">
+                    <!-- <header><span>This is an inline header in a panel.  Below is an inline footer</span></header>-->
+                        <h2 class='expanded' onclick='showHide(this,"admin_info");'>管理</h2>
+                    <p id='admin_info'>这个功能正在开发当中，请您持续关注我们的更新</p>
+                    <h3>Debug Tools</h3>
+                    <p>以下工具仅供开发人员调试用，请谨慎使用</p>
+                    <a class="button">原始数据库导入</a>
+                    <a id="importWeb" href="#importWebView" class="button">从网络导入</a>
+                    <a class="button">清楚所有条目</a>
+                </div>
+<!---------------------------------------------->
+                <div title="从网络导入" id="importWebView" class="panel" data-header="testheader">
+                    <!-- <header><span>This is an inline header in a panel.  Below is an inline footer</span></header>-->
+                        <h2 class='expanded' onclick='showHide(this,"admin_info");'>导入</h2>
+                    <div id="subject-field"></div>
+                </div>
+
+                <div title="About" id="about" class="panel" data-tab="navbar_about" data-nav="menu_AppFramework" data-header="testheader">
+                    <!-- <header><span>This is an inline header in a panel.  Below is an inline footer</span></header>-->
+                        <h2>关于我们</h2>
+                    <h3>这是什么？</h3>
+                    <p>这是一款用来帮助人们记忆的工具由 @discrete 提出，现在由 @DevisChan 维护和更新</p>
+                    <h3>如何使用？</h3>
+                    <p>您需要先在Admin页面下从网络导入测试数据，请在耐心等待几分钟直到出现“导入完成”，然后回到主页进行测试，另外你可以在添加页面对条目进行添加</p>
+                    <h3>使用要求</h3>
+                    <p>并不是所有设备都可以正常使用此App,目前已经测试正常使用的设别有</p>
+                    <ul>
+                        <li>Sumsung Galaxy Nexus</li>
+                    </ul>
+                    <p>将会有越来越多的设备被支持，请耐心等待</p>
+                    <p>此App目前为网页版本，迟些会推出本地的App应用，目前测试可用的浏览器</p>
+                    <ul>
+                        <li>Android browser</li>
+                    </ul>
+                    <p>有任何疑问可发送邮件至 cdzos97@gmail.com</p>
+                </div>
+    </div>
+            <!-- ------------------------------------------ -->
+            
+            <!-- navbar -->
+            
+            <div id="navbar">
+                <a href="#main/1/3" id='navbar_home' class='icon home'>Home <span class='af-badge lr'>3</span></a>
+                <a href="#postItem" id='navbar_post' class="icon target">Post</a>
+                <a href="#admin" id='navbar_admin' class="icon picture">Admin</a>
+                <a href="#about" id='navbar_about' class="icon key">About</a>
+            </div>
+        
+            <footer id='footerui'>
+                <a href="#main" id='navbar_home' class='icon home'>Home <span class='af-badge lr'>6</span></a>
+                <a href="#aftransitions" id='navbar_js' class="icon stack">Trans</a>
+                <a href="#afuidemo" id='navbar_ui' class="icon picture">ui</a>
+                <a href="#uiapi" id='navbar_plugins' class="icon info">api</a>
+            </footer>
+            <footer id='footerui2'>
+                <a href="#main" id='navbar_home' class='icon home'>Home <span class='af-badge lr'>6</span></a>
+                <a href="#aftransitions" id='navbar_js' class="icon stack">Trans</a>
+                <a href="#afuidemo" id='navbar_ui' class="icon picture">ui</a>
+                <a href="#uiapi" id='navbar_plugins' class="icon info">api</a>
+            </footer>
+            <header id="postItemheader">
+                <a id="backButton" onclick="$.ui.goBack()" class='button'>Back</a>
+                    <h1>提交条目</h1>
+                <!--<a class="button icon settings" style="float:right">Button</a>-->
+            </header>
+            <header id="testheader">
+                <a id="backButton" onclick="$.ui.goBack()" class='button'>Back</a>
+                    <h1>Custom Header</h1>
+                <a class="button icon settings" style="float:right">Button</a>
+            </header>
+            <!-- ------------------------------------------ -->
+            <nav>
+                <ul class="list" id="subject_choice">
+                    <li class="divider" class="icon home">科目</li>
+                    
+                </ul>
+            </nav>
+            <nav id="menu_AppFramework">
+                <ul class="list">
+                     <li class="divider">Selector</li>
+                    <li>
+                        <a href="#af1">$()</a>
+                    </li>
+                    <li>
+                        <a href="#af2">$().length()</a>
+                    </li>
+                    <li>
+                        <a href="#af3">$().find()</a>
+                    </li>
+                    <li>
+                        <a href="#af4">$().html()</a>
+                    </li>
+                    <li>
+                        <a href="#af5">$().text()</a>
+                    </li>
+                    <li>
+                        <a href="#af6">$().css()</a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+
+    </body>
+    <script type="application/javascript" src="./coffee/view.js"></script>
+</html>
