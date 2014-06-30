@@ -199,7 +199,7 @@
                     </script>
                 </div>
                 <!---------------------------------------------->
-                <div title="Post Item" id="postItem" class="panel" data-tab="navbar_post" data-nav="menu_AppFramework" data-header="postItemheader">
+                <div title="Post Item" id="postItem" class="panel" data-nav="standard-nav" data-tab="navbar_post" data-header="postItemheader">
                     <!-- <header><span>This is an inline header in a panel.  Below is an inline footer</span></header>-->
                         <h2 class='expanded' onclick='showHide(this,"postItem_info");'>Post Helper</h2>
 
@@ -214,7 +214,7 @@
     
             <!-- ------------------------------------------ -->
             <!---------------------------------------------->
-                <div title="Admin" id="admin" class="panel" data-tab="navbar_admin" data-nav="menu_AppFramework" data-header="testheader">
+                <div title="Admin" id="admin" class="panel" data-nav="standard-nav" data-tab="navbar_admin" data-header="testheader">
                     <!-- <header><span>This is an inline header in a panel.  Below is an inline footer</span></header>-->
                         <h2 class='expanded' onclick='showHide(this,"admin_info");'>管理</h2>
                     <p id='admin_info'>这个功能正在开发当中，请您持续关注我们的更新</p>
@@ -231,7 +231,7 @@
                     <div id="subject-field"></div>
                 </div>
 
-                <div title="About" id="about" class="panel" data-tab="navbar_about" data-nav="menu_AppFramework" data-header="testheader">
+                <div title="About" id="about" data-nav="standard-nav" class="panel" data-tab="navbar_about" data-header="testheader">
                     <!-- <header><span>This is an inline header in a panel.  Below is an inline footer</span></header>-->
                         <h2>关于我们</h2>
                     <h3>这是什么？</h3>
@@ -262,18 +262,6 @@
                 <a href="#about" id='navbar_about' class="icon key">About</a>
             </div>
         
-            <footer id='footerui'>
-                <a href="#main" id='navbar_home' class='icon home'>Home <span class='af-badge lr'>6</span></a>
-                <a href="#aftransitions" id='navbar_js' class="icon stack">Trans</a>
-                <a href="#afuidemo" id='navbar_ui' class="icon picture">ui</a>
-                <a href="#uiapi" id='navbar_plugins' class="icon info">api</a>
-            </footer>
-            <footer id='footerui2'>
-                <a href="#main" id='navbar_home' class='icon home'>Home <span class='af-badge lr'>6</span></a>
-                <a href="#aftransitions" id='navbar_js' class="icon stack">Trans</a>
-                <a href="#afuidemo" id='navbar_ui' class="icon picture">ui</a>
-                <a href="#uiapi" id='navbar_plugins' class="icon info">api</a>
-            </footer>
             <header id="postItemheader">
                 <a id="backButton" onclick="$.ui.goBack()" class='button'>Back</a>
                     <h1>提交条目</h1>
@@ -286,34 +274,28 @@
             </header>
             <!-- ------------------------------------------ -->
             <nav>
-                <ul class="list" id="subject_choice">
+                <ul class="list">
                     <li class="divider" class="icon home">科目</li>
+					<div id="subject_choice"></div>
+					<li class="divider" class="icon home">功能</li>
+					<li><a href="#main">Home</a></li>
+					<li><a href="#postItem">Post</a></li>
+					<li><a href="#admin">Admin</a></li>
+					<li><a href="#about">About</a></li>
                     
                 </ul>
             </nav>
-            <nav id="menu_AppFramework">
+			<nav id="standard-nav">
                 <ul class="list">
-                     <li class="divider">Selector</li>
-                    <li>
-                        <a href="#af1">$()</a>
-                    </li>
-                    <li>
-                        <a href="#af2">$().length()</a>
-                    </li>
-                    <li>
-                        <a href="#af3">$().find()</a>
-                    </li>
-                    <li>
-                        <a href="#af4">$().html()</a>
-                    </li>
-                    <li>
-                        <a href="#af5">$().text()</a>
-                    </li>
-                    <li>
-                        <a href="#af6">$().css()</a>
-                    </li>
+					<li class="divider" class="icon home">功能</li>
+					<li><a href="#main">Home</a></li>
+					<li><a href="#postItem">Post</a></li>
+					<li><a href="#admin">Admin</a></li>
+					<li><a href="#about">About</a></li>
+                    
                 </ul>
             </nav>
+            
 
         </div>
 
